@@ -1,5 +1,3 @@
-%title: Jenkins
-%author: xavki
 
 # Jenkins : sommaire
 
@@ -43,11 +41,6 @@
 ------------------------------------------------------------
 
 
-# Jenkins : sommaire
-
-
-<br>
-
 
 ## 8. Premier : build / run / test
 
@@ -88,11 +81,6 @@
 
 ---------------------------------------------------------------
 
-
-# Jenkins : sommaire
-
-
-<br>
 
 
 ## 16. Pipeline : générateur de syntax
