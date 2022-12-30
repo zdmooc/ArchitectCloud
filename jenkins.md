@@ -109,6 +109,23 @@ eda4060eb8404c3d985800c96c7841e8
 
 <br>
 
+* ajout du plugin : Role-based Authorization Strategy
+
+
+
+
+* permet :
+		* roles (groupes d'ensemble de users)
+		* users
+
+
+
+* affectation de tâches à un rôle
+ 
+Par exemple : développeurs, sysadmin...
+
+* affectation d'un pattern de jobs à un rôle : Java. Python.
+
 
 ## 5. Triggers et remote url
 
