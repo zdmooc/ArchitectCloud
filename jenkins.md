@@ -348,10 +348,157 @@ cat test.file
 
 ## 10. Trigger Git
 
+-> Jenkins : Git et son trigger <-
+========
+
+
+<br>
+
+
+* un dépôt :
+https://github.com/priximmo/jenkins-helloworld
+
+<br>
+
+
+* build sans utilisation du plugin GIT
+
+```
+# clone
+git clone https://github.com/priximmo/jenkins-helloworld
+
+# déplacement
+cd jenkins-helloworld
+
+# compilation
+javac Main.java
+
+# lancement run
+java Main
+```
+
+-------------------------------------------------------------
+
+
+-> Avec Plugin GIT <-
+
+
+<br>
+
+
+* Gestion de Code Source : GIT
+
+
+<br>
+
+
+* git clone n'est plus nécessaire
+
+
+* préciser bien la branche
+
+
+* attention aux droits sur votre dépôt = credentials si nécessaire
+
+
+<br>
+
+
+* et directement placé dans le répertoire cloné
+
+
+<br>
+
+
+* build réduit :
+
+```
+javac Main.java
+
+java Main
+```
+
+
+-------------------------------------------------------------
+
+
+
+-> GIT - Trigger <-
+
+
+<br>
+
+
+* trigger : check à intervales réguliers 
+
+
+
+* Ce qui déclenche le build : Scrutation de l'outil de gestion de version
+
+
+
+* ajouter l'interval
+
 <br>
 
 
 ## 11. Git push automatique
+
+-> Jenkins : Git push auto <-
+========
+
+
+<br>
+
+
+* credentials à ajouter : login/mdp + ID
+
+
+* exemple : si build = Ok => push d'un nouveau tag
+
+
+* possiblité de pusher sur une autre branche
+
+
+```
+git config --global user.email "xav@moi.fr"
+git config --global user.name "xavki"
+
+javac Main.java
+java Main
+```
+
+Rq : config git particulier
+
+
+----------------------------------------------------------------
+
+
+-> Action à la suite du build <-
+
+
+
+
+* si succès
+
+
+
+* TAG
+
+```
+Tag to push : VERSION-$BUILD_ID
+
+Tag message : Jenkins Job
+
+create new tag
+
+update new tag
+
+
+Target remote Name à définir et utiliser
+
+```
+
 
 <br>
 
