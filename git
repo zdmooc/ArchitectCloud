@@ -1,0 +1,28 @@
+> GIT : intérêt <-
+=========
+
+* microvidéos
+
+<br>
+* versionner : retour arrière, gestion version
+
+* dépot local et/ou distant(s) => github / gitlab
+
+
+-------------------------------------------------
+
+-> Premières commandes <-
+
+
+* sudo apt-get install git
+
+* git init : initialisation du dépôt local
+	- .git : tout le versionning
+
+* git add <nom fichier> : ajouter des fichiers
+	- éviter git add .
+
+* git commit : pour commenter les git add
+
+* git status : état du dépôt (actions à faire)
+
