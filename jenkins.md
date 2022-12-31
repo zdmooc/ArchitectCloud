@@ -578,43 +578,380 @@ Target remote Name à définir et utiliser
 
 
 ## 12. Les vues
+-> Jenkins : Les Vues<-
 
+
+objectif : organiser le classement des jobs
+
+
+
+
+soit une vue personnaliée
+
+
+soit des vues de classement
+
+
+
+
+permet de filtrer les files de lanceurs et de constructions
+
+
+
+peut être alimentée par une regex de filtre (Java_ ...)
 <br>
 
 
 ## 13. Plugin : delivery pipeline
 
+-> Jenkins : Plugin Delivery<-
+
+https://wiki.jenkins.io/display/JENKINS/Delivery+Pipeline+Plugin
 <br>
 
 
 ## 14. Maven : packager un projet avec jenkins
 
+-> Jenkins : Maven <-
+Dépôt : https://github.com/priximmo/mvn-helloworld
+
+
+install jenkins hors docker
+
+
+https://jenkins.io/doc/book/installing/
+
+
+
+
+install java :
+
+
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt-get update
+sudo apt-get install oracle-java11-installer
+sudo vim /etc/environment 
+
+JAVA_HOME="/usr/lib/jvm/java-11-oracle/"
+
+
+
+install maven :
+
+
+sudo apt-get install maven
+
+
+
+-> Maven dans jenkins <-
+
+
+configuration global des outils
+
+
+
+configuration maven
+
+
+
+maven : MAVEN_HOME à définir
+
+
+-> Pour un build <-
+
+
+
+ajout d'un dépôt git avec un projet maven : pom.xml
+
+
+build : définir les actions
+
+
+post step :
+
+
+
+java -jar target/helloworld-app-1.0-SNAPSHOT.jar
 <br>
 
 
 ## 15. Premier pipeline
 
----------------------------------------------------------------
+
+-> Jenkins : premier pipeline <-
+
+
+
+pipeline: chaine d'actions / jobs décrits par du code (groovy)
+
+
+modèle : https://jenkins.io/doc/book/pipeline/
+
+
+
+pipeline {
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                // 
+            }
+        }
+        stage('Test') { 
+            steps {
+                // 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                // 
+            }
+        }
+    }
+}
+
+
+
+Jenkinsfile : intégre directement ce script dans le dépôt
+
+
+-> Exemple : clone / build / run <-
+
+
+
+java helloworld
+
+
+groovy :
+
+
+
+pipeline {
+    agent any 
+    stages {
+        stage('clone') { 
+            steps {
+                sh "rm -rf *"
+                sh "git clone https://github.com/priximmo/jenkins-helloworld"
+            }
+        }
+        stage('build') { 
+            steps {
+                sh "cd jenkins-helloworld/ && javac Main.java"
+            }
+        }
+        stage('run') { 
+            steps {
+                sh "cd jenkins-helloworld/ && java Main"
+            }
+        }
+    }
+}
 
 
 
 ## 16. Pipeline : générateur de syntax
 
+-> Jenkins Pipeline : générateur de syntax <-
+
+
+modèle : https://jenkins.io/doc/book/pipeline/
+
+
+
+pipeline {
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                // 
+            }
+        }
+        stage('Test') { 
+            steps {
+                // 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                // 
+            }
+        }
+    }
+}
+
+
+
+-> Utilisateur de l'éditeur <-
+
+
+java helloworld
+
+
+https://github.com/priximmo/jenkins-helloworld/
+
+
+
+groovy :
+
+
+node {
+    stage('clone') {
+    git 'https://github.com/priximmo/jenkins-helloworld.git'
+    sh label: '', script: '''ls
+    javac Main.java
+    java Main'''
+}
+}
 <br>
 
 
 ## 17. Pipeline : premier jenkinsfile
 
+-> Jenkins Pipeline : Jenkinsfile <-
+
+
+
+Jenkinsfile : versionner
+
+
+déclaratif
+
+
+facile à utiliser sur d'autres serveurs
+
+
+
+-> Toujours : clone / build / run <-
+
+
+groovy :
+
+
+pipeline {
+    agent any
+    stages {
+        stage('Pull') {
+            steps {
+                checkout([$class: 'GitSCM',
+                branches: [[name: '*/master']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [],
+                submoduleCfg: [],
+                userRemoteConfigs: [[url: 'https://github.com/priximmo/jenkins-helloworld.git']]])
+                sh "ls"
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "javac Main.java"
+            }
+        }
+        stage('Run') {
+            steps {
+                sh "java Main"
+            }
+        }
+    }
 <br>
 
 
 ## 18. Docker : run d'un conteneur
 
+-> Jenkins Pipeline : Docker <-
+
+
+
+pourquoi ?
+
+
+runner des conteneurs et travailler dedans (environnement personnalisé - ex: ubuntu:1804)
+
+
+runner des conteneurs pour faire des test dessus
+
+
+construire des images pour livrer et déployer en production
+
+
+intégrer des tests sur conteneurs
+
+
+attention : sudo usermod -aG docker $USER
+
+
+si on simplifie, deux cas :
+* agent : on travaille dans le conteneur (le conteneur est un host)
+* node : on travaille de l'extérieur du conteneur (le conteneur est une cible)
+
+
+
+
+doc : https://jenkins.io/doc/book/pipeline/docker/
+
+
+
+->  Run d'un nginx <-
+
+cas du node : on est à l'extérieur
+
+
+node {
+        docker.image('nginx:latest').withRun('-p 80:80') { c ->
+
+        sh 'docker ps'
+
+        sh 'curl localhost'
+
+    }
+}
+
+
+
+cas de l'agent : on est dedans
+
+
+pipeline {
+    agent {
+        docker {
+            image 'nginx:latest'
+            args '-p 80:80'
+        }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'cat /etc/nginx/conf.d/default.conf'
+            }
+        }
+    }
+}
 <br>
 
 
 ## 19. Docker : build d'une image
 
+-> Jenkins Pipeline : Docker Build<-
+
+
+node{
+  def app
+
+    stage('Clone') {
+        checkout scm
+    }
+
+    stage('Build image') {
+        app = docker.build("xavki/nginx")
+    }
+
+    stage('Test image') {
+        docker.image('xavki/nginx').withRun('-p 80:80') { c ->
+        sh 'docker ps'
+        sh 'curl localhost'
+	     }
+    }
+}
 <br>
 
 
