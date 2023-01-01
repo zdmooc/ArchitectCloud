@@ -2,11 +2,6 @@
 # Jenkins : sommaire
 
 
-
-
-
-
-
 <br>
 
 
