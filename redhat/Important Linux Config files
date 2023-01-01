@@ -1,0 +1,33 @@
+
+
+User accounts, authentication and messages
+
+etc/passwd Local authentication user file
+/etc/shadow Local authentication password file
+/etc/group Local system groups
+/etc/gshadow Local system group authentication password file
+/etc/sudoers Config file for SUDO
+/etc/issue Text shown before a user logs in
+/etc/motd Message of the day shown after a user logs in
+/etc/pam.d/ Config files for PAM system authentication
+/etc/profile System wide environment
+/etc/profile.d/ System wide environment additional files
+/etc/bashrc System wide aliases and functions
+~./bash_profile User specific environment and startup programs
+~/.bashrc User specific aliases and functions
+
+
+Disks, scheduled tasks and other
+
+/etc/fstab Filesystem table that lists all filesystems to be mounted
+/etc/exports Exported filesystems for NFS
+/etc/nsswitch.conf Determines name resolution order
+/etc/hosts Static name resolution
+resolv.conf External DNS servers
+/etc/crontab System wide scheduled tasks
+/etc/cron.d/ System wide scheduled tasks additional files
+/etc/anacrontab System wide anacron scheduled tasks
+/etc/cron.allow, /etc/cron.deny Allow/Deny access control for cron jobs
+/etc/hosts.allow, /etc/hosts.deny Allow/deny files for ssh (and other tcpwrappers tools)
+/etc/ssh/ Config files and keys for ssh
+/etc/sysconfig/ System hardware config files
