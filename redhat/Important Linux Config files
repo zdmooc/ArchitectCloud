@@ -2,7 +2,7 @@
 
 User accounts, authentication and messages
 
-etc/passwd Local authentication user file
+/etc/passwd Local authentication user file
 /etc/shadow Local authentication password file
 /etc/group Local system groups
 /etc/gshadow Local system group authentication password file
