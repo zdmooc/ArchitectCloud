@@ -214,5 +214,28 @@ LoadBalancer - Crée un équilibreur de charge externe dans le cloud actuel (si 
 	Surensemble de NodePort.
 ExternalName - Mappe le Service sur le contenu du externalNamechamp (par exemple foo.bar.example.com), en renvoyant un CNAMEenregistrement avec sa valeur.
 	Aucun proxy d'aucune sorte n'est mis en place. Ce type nécessite la version 1.7 ou supérieure de kube-dns, ou la version 0.0.8 ou supérieure de CoreDNS.
+	
+
+	Exposer votre application
+--------------------------------
+	    2  kubectl get pods
+    3  kubectl get services
+    4  kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+    5  kubectl get services
+    6  kubectl describe services/kubernetes-bootcamp
+    7  export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+    8  echo NODE_PORT=$NODE_PORT
+    9  curl $(minikube ip):$NODE_PORT
+   10  kubectl describe deployment
+   11  kubectl get pods -l app=kubernetes-bootcamp
+   12  kubectl get services -l app=kubernetes-bootcamp
+   13  export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+   14  echo Name of the Pod: $POD_NAME
+   15  kubectl label pods $POD_NAME version=v1
+   16  kubectl describe pods $POD_NAME
+   17  kubectl get pods -l version=v1
+   19  kubectl get pods
+   20  kubectl get services
+   21  kubectl describe deployment
  
  
