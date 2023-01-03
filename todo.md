@@ -20,3 +20,9 @@ https://github.com/Dileeprithvi/DeclarativeCI-CD
 
 
 Intégration continue. CircleCI contre Travis CI contre Jenkins
+
+docker on permise aws , gcp , azure
+Kuberntes on permise , aws, gcp, azure 
+jenkins en on permises , on docker , on kubernetes
+oega on permise , aws , gcp , azure
+
