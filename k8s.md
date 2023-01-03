@@ -201,6 +201,18 @@ Un service dans Kubernetes
 Comprendre comment les étiquettes et les objets LabelSelector sont liés à un service
 Exposer une application en dehors d'un cluster Kubernetes à l'aide d'un service
 
-Les pods Kubernetes sont mortels. Les pods ont un cycle de vie . Lorsqu'un nœud de travail meurt, les pods exécutés sur le nœud sont également perdus. Un ReplicaSet peut alors ramener dynamiquement le cluster à l'état souhaité via la création de nouveaux pods pour maintenir votre application en cours d'exécution.
+Les pods Kubernetes sont mortels. Les pods ont un cycle de vie . Lorsqu'un nœud de travail meurt, les pods exécutés sur le nœud sont également perdus.
+Un ReplicaSet peut alors ramener dynamiquement le cluster à l'état souhaité via la création de nouveaux pods pour maintenir votre application en cours d'exécution.
+
+
+Bien que chaque pod ait une adresse IP unique, ces adresses IP ne sont pas exposées en dehors du cluster sans service. Les services permettent à vos applications de recevoir du trafic. Les services peuvent être exposés de différentes manières en spécifiant a typedans la ServiceSpec :
+
+ClusterIP (par défaut) - Expose le service sur une adresse IP interne dans le cluster. Ce type rend le service uniquement accessible depuis le cluster.
+NodePort - Expose le service sur le même port de chaque nœud sélectionné dans le cluster à l'aide de NAT.
+Rend un service accessible depuis l'extérieur du cluster à l'aide de <NodeIP>:<NodePort>. Surensemble de ClusterIP.
+LoadBalancer - Crée un équilibreur de charge externe dans le cloud actuel (si pris en charge) et attribue une adresse IP externe fixe au service. 
+	Surensemble de NodePort.
+ExternalName - Mappe le Service sur le contenu du externalNamechamp (par exemple foo.bar.example.com), en renvoyant un CNAMEenregistrement avec sa valeur.
+	Aucun proxy d'aucune sorte n'est mis en place. Ce type nécessite la version 1.7 ou supérieure de kube-dns, ou la version 0.0.8 ou supérieure de CoreDNS.
  
  
