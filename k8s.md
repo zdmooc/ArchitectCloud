@@ -1,4 +1,21 @@
 
+-> Kubernetes : pourquoi ? <-
+
+
+pour orchestrer : comme swarm (lancement orchestré de multiples conteneurs)
+
+
+
+pour créer de l'abstraction avec la notion de service (plus en IP)
+
+
+
+pour apporter de la haute disponibilité (maintenir les conteneurs up)
+
+
+
+pour scaler : lancer de multiples instances en fonction de paramètres (à la main ou en automatique)
+
 
 creation d'un deployement ( deployer des applications sur un cluster avec kubectl)
   indique comment créer et maj des instances des applis
@@ -57,3 +74,18 @@ kubectl get - répertorie les ressources
 kubectl describe - affiche des informations détaillées sur une ressource
 kubectl logs - imprime les journaux d'un conteneur dans un pod
 kubectl exec - exécute une commande sur un conteneur dans un pod 
+
+
+ troubleshoot Kubernetes applications using the kubectl get, describe, logs and exec commands.
+ 
+ a completer
+ 
+ Using a Service to Expose Your App
+ 
+Un service dans Kubernetes
+Comprendre comment les étiquettes et les objets LabelSelector sont liés à un service
+Exposer une application en dehors d'un cluster Kubernetes à l'aide d'un service
+
+Les pods Kubernetes sont mortels. Les pods ont un cycle de vie . Lorsqu'un nœud de travail meurt, les pods exécutés sur le nœud sont également perdus. Un ReplicaSet peut alors ramener dynamiquement le cluster à l'état souhaité via la création de nouveaux pods pour maintenir votre application en cours d'exécution.
+ 
+ 
