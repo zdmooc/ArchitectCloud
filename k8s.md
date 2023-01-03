@@ -259,3 +259,6 @@ ExternalName - Mappe le Service sur le contenu du externalNamechamp (par exemple
 	
 	
 	--------------------------------------------------
+	
+mise à jour continue
+	
