@@ -42,3 +42,18 @@ The goal of this scenario is to help you deploy your first app on Kubernetes usi
   
     7  curl http://localhost:8001/version
     9  curl http://localhost:8001/api/v1/namespaces/default/pods/$P
+    
+  un pod contient des resources suivantes :
+   Stockage partagé, en tant que volumes
+    Mise en réseau, en tant qu'adresse IP de cluster unique
+    Informations sur l'exécution de chaque conteneur, telles que la version de l'image du conteneur ou les ports spécifiques à utiliser
+    
+  Chaque nœud Kubernetes exécute au moins :
+
+    Kubelet, un processus responsable de la communication entre le plan de contrôle Kubernetes et le nœud ; il gère les Pods et les conteneurs s'exécutant sur une machine.
+Un environnement d'exécution de conteneur (comme Docker) chargé d'extraire l'image du conteneur d'un registre, de décompresser le conteneur et d'exécuter l'application.
+
+kubectl get - répertorie les ressources
+kubectl describe - affiche des informations détaillées sur une ressource
+kubectl logs - imprime les journaux d'un conteneur dans un pod
+kubectl exec - exécute une commande sur un conteneur dans un pod 
