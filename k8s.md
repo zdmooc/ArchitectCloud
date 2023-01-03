@@ -239,3 +239,23 @@ ExternalName - Mappe le Service sur le contenu du externalNamechamp (par exemple
    21  kubectl describe deployment
  
  
+	
+	------------------------------------
+	Mise à l'échelle de votre application
+	
+	    2  kubectl get deployments
+    3  kubectl get rs
+    4  kubectl scale deployments/kubernetes-bootcamp --replicas=4
+    5  kubectl get deployments
+    6  kubectl get pods -o wide
+    7  kubectl describe deployments/kubernetes-bootcamp
+    8  kubectl describe services/kubernetes-bootcamp
+    9  export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+   10  echo NODE_PORT=$NODE_PORT
+   11  curl $(minikube ip):$NODE_PORT
+   12  kubectl scale deployments/kubernetes-bootcamp --replicas=2
+   13  kubectl get deployments
+   14  kubectl get pods -o wide
+	
+	
+	--------------------------------------------------
