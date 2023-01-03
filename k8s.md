@@ -262,3 +262,35 @@ ExternalName - Mappe le Service sur le contenu du externalNamechamp (par exemple
 	
 mise à jour continue
 	
+	Les mises à jour progressives permettent les actions suivantes :
+
+Promouvoir une application d'un environnement à un autre (via des mises à jour d'image de conteneur)
+Retour aux versions précédentes
+Intégration continue et livraison continue d'applications sans temps d'arrêt
+
+	
+update a deployed application with kubectl set image and to rollback with the rollout undo command.
+	
+    1  sleep 1; launch.sh
+    2  kubectl get deployments
+    3  kubectl get pods
+    4  kubectl describe pods
+    5  kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+    6  kubectl get pods
+    7  kubectl describe services/kubernetes-bootcamp
+    8  export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+    9  echo NODE_PORT=$NODE_PORT
+   10  curl $(minikube ip):$NODE_PORT
+   11  kubectl rollout status deployments/kubernetes-bootcamp
+   12  kubectl describe pods
+   13  kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=gcr.io/google-samples/kubernetes-bootcamp:v10
+   14  kubectl get deployments
+   15  kubectl get pods
+   16  kubectl describe pods
+   17  kubectl rollout undo deployments/kubernetes-bootcamp
+   18  kubectl get pods
+   19  kubectl describe pods
+   21  kubectl get deployments
+   22  kubectl get pods
+   23  kubectl describe pods
+
