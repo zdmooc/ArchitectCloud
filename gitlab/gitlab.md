@@ -165,3 +165,120 @@ Password > vim /etc/gitlab/initial_root_password
 	Users
 
 	Interface d'administration
+
+
+
+
+# GITLAB : 04 - Premier user
+
+# GITLAB : 05 - Premier Dépôt
+
+%title: GITLAB
+%author: xavki
+
+
+# GITLAB : 06 - Premier Git Clone
+
+
+<br>
+
+git clone (ssh|https)
+
+3 types d'accès :
+
+		* ssh
+
+		* https : variables d'environnement
+				http://${GIT_USER}:${GIT_PASSWORD}@gitlaburl
+
+		* token (Personnal/Project)
+				https://<token-name>:<token>@gitlaburl
+
+
+
+%title: GITLAB
+%author: xavki
+
+
+# GITLAB : 07 - Issues - Basics
+
+
+<br>
+
+Doc : https://docs.gitlab.com/
+
+* gestion des tickets
+
+* approche par projets et par utilisateurs
+
+* 3 sous rubriques :
+
+		* List : liste des tickets
+
+		* Boards : vision sous forme de tableau des avancées des tickets
+
+		* Service Desk : permet l'utilisation via solution externes (mails par exemple)
+
+		* Milestones : tracking de certains tickets éventuellement couplé aux MR
+
+----------------------------------------------------------------------------------------------
+
+# GITLAB : 07 - Issues - Basics
+
+<br>
+
+* référence à des users ou groupes @{user}
+
+* lien vers des commits : #{num_commit}
+
+* intégration de code `` ou <code>
+
+* time tracking : /estimate et  /spent
+  
+
+  %title: GITLAB
+%author: xavki
+
+
+# GITLAB : 08 - Issues Templates
+
+
+<br>
+
+* Templates de ticket
+
+	* doc : https://docs.gitlab.com/ee/user/project/description_templates.html
+
+	* .gitlab/issue_templates/
+
+	* format markdown
+
+* add to do (issues, merge requests, epics, design)
+	* ou avec la référence @ en début de ligne (important)
+
+* move issue
+
+* delete issue
+
+%title: GITLAB
+%author: xavki
+
+
+# GITLAB : 09 - Labels
+
+
+<br>
+
+* Labels
+
+	* Project information > Labels (description, couleur, suscribe)
+
+	* génération d'un jeu de labels par défaut
+
+	* catégories pour issues, merge requests, epics
+
+	* intégration aux boards et à la recherche
+
+	* promote Labels en Groupes
+
+	* prioriser les labels
