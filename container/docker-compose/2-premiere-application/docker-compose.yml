@@ -10,6 +10,8 @@ services:
     networks:
       - backend
       - frontend
+    volumes:
+      - dbdata:/database
   redis:
     image: redis:4.0.11-alpine
     networks:
