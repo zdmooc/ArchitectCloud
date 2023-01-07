@@ -1,0 +1,8 @@
+
+docker-compose up -d
+
+docker inspect 02-installation_gitlab_1
+docker logs -f  02-installation_gitlab_1
+
+docker exec -it gitlab-ce grep 'Password:' /etc/gitlab/initial_root_password
+grep 'Password:' /etc/gitlab/initial_root_password
