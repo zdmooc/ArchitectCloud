@@ -1,0 +1,38 @@
+{
+  "user": {
+    "id": "SrvuxiAkzEG1Te1_uDUTpg2",
+    "fullName": "zidane djamal",
+    "email": "dautorithy@gmail.com",
+    "companyEmail": null,
+    "companyName": null,
+    "businessTitle": null,
+    "preferredLanguage": "en-US",
+    "country": "FRA",
+    "preferredTimeZone": "Europe/Paris",
+    "roleId": null,
+    "audience": "Customers"
+  },
+  "transcripts": [],
+  "orders": [],
+  "subscriptions": [],
+  "externalIdentities": [
+    {
+      "system": "Amazon.com",
+      "externalId": "241729959912",
+      "email": "dautorithy@gmail.com",
+      "lastUsedDate": "12 January, 2023 @ 07:50 AM"
+    },
+    {
+      "system": "CertMetrics",
+      "externalId": "AWS03325422",
+      "email": "",
+      "lastUsedDate": "9 January, 2023 @ 02:42 PM"
+    },
+    {
+      "system": "hatId-LWA",
+      "externalId": "ebdddcc2-1118-40ec-ae63-a6f524952005",
+      "email": "",
+      "lastUsedDate": "12 January, 2023 @ 07:50 AM"
+    }
+  ]
+}

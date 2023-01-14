@@ -1,0 +1,9 @@
+Get VPC ID and Subnet ID
+Get AMI Id
+Create Security Group
+Create SSH Key Pair
+AWS CLI Command to Create ec2
+AWS CLI Command to Create ec2 Instance With User Data
+
+
+https://devopscube.com/use-aws-cli-create-ec2-instance/
