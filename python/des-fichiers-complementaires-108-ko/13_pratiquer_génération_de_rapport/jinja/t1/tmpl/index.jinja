@@ -1,0 +1,24 @@
+{% extends "base.jinja" %}
+{% block titre %}Page d'index{% endblock %}
+
+{% block head %}
+	{{ super() }}
+{% endblock %}
+
+{% block entete %}
+	<h3 class="text-muted">PAGE D'INDEX</h3>
+{% endblock %}
+
+{% block contenu %}
+<p>
+	Voici le texte du contenu 
+	<pre>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id sodales leo. Nulla in urna tincidunt, 
+	eleifend massa et, eleifend metus. Sed semper congue orci sed pretium. In elementum purus vel ante ornare, 
+	vitae porta felis rhoncus. Donec a est luctus, hendrerit elit ut, sodales enim. Praesent semper erat tempus 
+	blandit iaculis. Duis risus neque, ullamcorper pretium gravida id, pretium non sem. Donec libero orci, 
+	vehicula in faucibus eu, volutpat rutrum metus. Sed molestie dolor non eros hendrerit, vitae posuere metus 
+	iaculis. Sed vulputate nisi ex, ut luctus tellus mattis sed. 
+	</pre>
+</p>
+{% endblock %}

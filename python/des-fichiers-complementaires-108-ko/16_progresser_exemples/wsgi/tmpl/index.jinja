@@ -1,0 +1,58 @@
+{% extends "base.jinja" %}
+{% block titre %}Index Of{% endblock %}
+
+{% block head %}
+	{{ super() }}
+{% endblock %}
+
+{% block entete %}
+	<h3 class="text-muted">Index Of</h3>
+{% endblock %}
+
+{% block contenu %}
+{{  data.breadcrum }}
+{# --------------------- REPERTOIRES ------------------ #}
+<hr/>
+<table class="table table-sm small">
+<thead class="thead-light">
+	<tr>
+		<th> Répertoire </th>
+		<th> Informations </th>
+		<th> Date </th>
+	</tr> 
+</thead>
+<tbody>
+{%- for l in data.rep %}
+<tr>
+	<td>{{ l.nom }}</td>
+	<td>{{ l.info }}</td>
+	<td>{{ l.date }}</td>
+</tr>
+{%- endfor %}
+</tbody>
+</table>
+{# --------------------- FICHIERS ------------------ #}
+<hr/>
+<table class="table table-sm small">
+<thead class="thead-light">
+	<tr>
+		<th> Fichier </th>
+		<th> Download </th>
+		<th> Taille </th>
+		<th> Date </th>
+		<th> Informations </th>
+	</tr> 
+</thead>
+<tbody>
+{%- for l in data.fichiers %}
+<tr>
+	<td>{{ l.nom }}</td>
+	<td>{{ l.download }}</td>
+	<td align="right">{{ l.size }}</td>
+	<td>{{ l.date }}</td>
+	<td>{{ l.info }}</td>
+</tr>
+{%- endfor %}
+</tbody>
+</table>
+{% endblock %}
